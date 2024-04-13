@@ -4,4 +4,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="primary_green">#4BA26A</color>
     <color name="primary_dark">#373737</color>
+    <color name="secondary_dark">#1E1E1E</color>
+    <color name="light_dark_grey">#F3F3F3</color>
+    <color name="medium_dark_grey">#A1A1A1</color>
+    <color name="medium_dark_grey1">#9C9C9C</color>
+    <color name="medium_dark_grey2">#B0ABAB</color>
 </resources>

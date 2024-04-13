@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/onboarding_nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/onboarding_nav_graph"
+    app:startDestination="@id/onBoardingScreen1Fragment">
 
+    <fragment
+        android:id="@+id/onBoardingScreen1Fragment"
+        android:name="com.cropbit.onboarding_module.presentation.fragments.OnBoardingScreen1Fragment"
+        android:label="fragment_on_boarding_screen1"
+        tools:layout="@layout/fragment_on_boarding_screen1" />
+    <fragment
+        android:id="@+id/onBoardingScreen2Fragment"
+        android:name="com.cropbit.onboarding_module.presentation.fragments.OnBoardingScreen2Fragment"
+        android:label="fragment_on_boarding_screen2"
+        tools:layout="@layout/fragment_on_boarding_screen2" />
+    <fragment
+        android:id="@+id/onBoardingScreen3Fragment"
+        android:name="com.cropbit.onboarding_module.presentation.fragments.OnBoardingScreen3Fragment"
+        android:label="fragment_on_boarding_screen3"
+        tools:layout="@layout/fragment_on_boarding_screen3" />
 </navigation>

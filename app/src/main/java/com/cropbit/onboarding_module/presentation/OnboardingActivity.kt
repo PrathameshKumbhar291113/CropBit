@@ -1,12 +1,9 @@
 package com.cropbit.onboarding_module.presentation
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.cropbit.R
 import com.cropbit.databinding.ActivityOnboardingBinding
+import com.cropbit.utils.appStatusBarColor
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -18,5 +15,11 @@ class OnboardingActivity : AppCompatActivity() {
         binding = ActivityOnboardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setupUi()
+
+    }
+
+    private fun setupUi() {
+        appStatusBarColor(this, window)
     }
 }

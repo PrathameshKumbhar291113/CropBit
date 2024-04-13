@@ -2,4 +2,7 @@
     <string name="app_name">Crop Bit</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sign_up">Don’t have an account? <font color="#4BA26A"><b>Sign Up</b></font></string>
+    <string name="sign_in">Already have an account? <font color="#4BA26A"><b>Sign In</b></font></string>
+    <string name="web_client_id">648099575734-l71q50p6a77ive4kknef8q7vngnd5b8j.apps.googleusercontent.com</string>
 </resources>

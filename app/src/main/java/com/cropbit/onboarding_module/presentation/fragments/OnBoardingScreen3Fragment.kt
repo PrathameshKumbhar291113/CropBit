@@ -1,13 +1,15 @@
 package com.cropbit.onboarding_module.presentation.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.cropbit.R
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.cropbit.auth_module.presentation.AuthActivity
 import com.cropbit.databinding.FragmentOnBoardingScreen3Binding
 import dagger.hilt.android.AndroidEntryPoint
+import splitties.fragments.start
 
 @AndroidEntryPoint
 class OnBoardingScreen3Fragment : Fragment() {
@@ -29,5 +31,21 @@ class OnBoardingScreen3Fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupUi()
+    }
+
+    private fun setupUi() {
+        binding.nextButton.setOnClickListener {
+            start<AuthActivity>()
+        }
+
+        binding.backButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
+        binding.skipText.setOnClickListener {
+            start<AuthActivity>()
+            requireActivity().finish()
+        }
     }
 }
