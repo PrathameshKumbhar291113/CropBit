@@ -99,7 +99,7 @@ class LogInFragment : Fragment() {
         }
 
         binding.loginButton.setOnClickListener {
-            firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+            /*firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                 if (it.isSuccessful) {
                     lifecycleScope.launch {
                         Toast.makeText(requireContext(), "Successfully LoggedIn.", Toast.LENGTH_SHORT).show()
@@ -110,7 +110,10 @@ class LogInFragment : Fragment() {
                 } else {
                     Toast.makeText(requireContext(), "${it.exception}", Toast.LENGTH_SHORT).show()
                 }
-            }
+            }*/
+
+            start<HomeActivity>()
+            requireActivity().finish()
         }
     }
 

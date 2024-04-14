@@ -74,6 +74,7 @@ dependencies {
     def circular_progress_bar_version = '3.1.0'
     def circular_image_view_version = '3.1.0'
     def glide_version = '4.13.2'
+    def google_location_version = '21.2.0'
 
     implementation "androidx.core:core-ktx:$androidx_core_version"
     implementation "androidx.appcompat:appcompat:$androidx_appcompat_version"
@@ -154,4 +155,7 @@ dependencies {
     implementation("com.google.firebase:firebase-auth-ktx")
     //firebase google auth
     implementation "com.google.android.gms:play-services-auth:$firebase_google_auth_version"
+
+    //google fused location
+    implementation "com.google.android.gms:play-services-location:$google_location_version"
 }

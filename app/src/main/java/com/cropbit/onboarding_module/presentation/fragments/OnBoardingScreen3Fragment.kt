@@ -37,6 +37,7 @@ class OnBoardingScreen3Fragment : Fragment() {
     private fun setupUi() {
         binding.nextButton.setOnClickListener {
             start<AuthActivity>()
+            requireActivity().finish()
         }
 
         binding.backButton.setOnClickListener {

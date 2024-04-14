@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:icon="@drawable/iv_home"
+        android:id="@+id/homeFragment"
+        android:title="Home"
+        tools:ignore="HardcodedText" />
+    <item
+        android:icon="@drawable/iv_bit_bot"
+        android:id="@+id/bitBotFragment"
+        android:title="Bit Bot"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:icon="@drawable/iv_user"
+        android:id="@+id/profileFragment"
+        android:title="Profile"
+        tools:ignore="HardcodedText" />
+
+</menu>
