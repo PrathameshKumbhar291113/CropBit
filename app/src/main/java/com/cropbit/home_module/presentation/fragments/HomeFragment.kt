@@ -10,8 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import coil.load
 import com.cropbit.databinding.FragmentHomeBinding
 import com.cropbit.home_module.presentation.view_model.HomeViewModel
@@ -19,6 +21,8 @@ import com.cropbit.utils.NetworkResult
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -53,15 +57,26 @@ class HomeFragment : Fragment() {
 
         homeViewModel.currentWeatherResponse.observe(viewLifecycleOwner){
             when(it){
-                is NetworkResult.Loading ->{}
+                is NetworkResult.Loading ->{
+
+                }
                 is NetworkResult.Success ->{
+                    lifecycleScope.launch {
+                        delay(3000)
+                        binding.progressContainer.isVisible = false
+                        binding.homeContainer.isVisible = true
+                    }
+
                     binding.weatherForecastIcon.load("https:${it.data?.body()?.current?.condition?.icon.toString()}")
                     Log.e("weather", "setupObservers: ${it.data?.body()?.current?.condition?.icon.toString()}")
                     binding.temperatureTextView.text = "${it.data?.body()?.current?.tempC.toString()}°C"
                     binding.conditionTextView.text = it.data?.body()?.current?.condition?.text.toString()
                     binding.locationTextView.text = it.data?.body()?.location?.name.toString()
                 }
-                is NetworkResult.Error ->{}
+                is NetworkResult.Error ->{
+                    binding.homeContainer.isVisible = true
+                    binding.progressContainer.isVisible = false
+                }
             }
         }
 

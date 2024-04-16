@@ -7,108 +7,287 @@
     android:background="@color/light_dark_grey"
     tools:context=".home_module.presentation.fragments.HomeFragment">
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/scrollView"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/progressContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <com.mikhaellopez.circularprogressbar.CircularProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:cpb_background_progressbar_color="@color/light_dark_grey"
+            app:cpb_background_progressbar_width="10dp"
+            app:cpb_indeterminate_mode="true"
+            app:cpb_progressbar_color="@color/primary_green"
+            app:cpb_progressbar_color_direction="top_to_bottom"
+            app:cpb_progressbar_width="10dp"
+            app:cpb_round_border="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/homeContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/toolBar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:background="@color/primary_green"
+            android:paddingVertical="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/weatherForecast"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/pt_sans"
-                android:paddingHorizontal="20dp"
-                android:text="Current Weather"
-                android:textColor="@color/secondary_dark"
+                android:id="@+id/appNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="5dp"
+                android:fontFamily="@font/pt_sans_bold"
+                android:paddingStart="15dp"
+                android:text="@string/app_name"
+                android:textAlignment="textStart"
+                android:textColor="@color/white"
                 android:textSize="30dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/ivLogo"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.cardview.widget.CardView
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivLogo"
+                android:layout_width="30dp"
+                android:layout_height="0dp"
+                android:tint="@color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/appNameText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/appNameText"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/cropbit_logo" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolBar">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
-                android:layout_height="190dp"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="10dp"
-                app:cardCornerRadius="30dp"
-                app:cardElevation="2dp">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/weatherForecast"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/shape_weather_forecast_card_bg">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/pt_sans_bold"
+                    android:paddingHorizontal="20dp"
+                    android:text="Current Weather"
+                    android:textColor="@color/secondary_dark"
+                    android:textSize="30dp"
+                    android:textStyle="bold" />
 
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/weatherForecastIcon"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:scaleType="centerCrop"
-                        android:tint="@color/primary_green"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.90"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.20" />
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="190dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="30dp"
+                    app:cardElevation="2dp">
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/temperatureTextView"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shape_weather_forecast_card_bg">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/weatherForecastIcon"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:scaleType="centerCrop"
+                            android:tint="@color/primary_green"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.90"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.20" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/temperatureTextView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:fontFamily="@font/pt_sans_bold"
+                            android:textColor="@color/white"
+                            android:textSize="50dp"
+                            app:layout_constraintBottom_toTopOf="@id/conditionTextView"
+                            app:layout_constraintEnd_toStartOf="@+id/weatherForecastIcon"
+                            app:layout_constraintHorizontal_bias="0.15"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_chainStyle="packed"
+                            tools:text="130°C" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/locationTextView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/pt_sans"
+                            android:textColor="@color/white"
+                            android:textSize="25dp"
+                            android:textStyle="italic"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/conditionTextView"
+                            app:layout_constraintTop_toBottomOf="@id/conditionTextView"
+                            tools:text="Navi Mumbai" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/conditionTextView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/pt_sans"
+                            android:textColor="@color/white"
+                            android:textSize="35dp"
+                            android:textStyle="bold|italic"
+                            app:layout_constraintBottom_toTopOf="@+id/locationTextView"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/temperatureTextView"
+                            app:layout_constraintTop_toBottomOf="@+id/temperatureTextView"
+                            tools:text="Rainy" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/mainFeaturesTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/pt_sans_bold"
+                    android:paddingHorizontal="20dp"
+                    android:text="Main Features"
+                    android:textColor="@color/secondary_dark"
+                    android:textSize="30dp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/mainFeaturesContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="10dp"
+                    android:paddingHorizontal="10dp"
+                    android:weightSum="2">
+
+                    <androidx.cardview.widget.CardView
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="15dp"
-                        android:fontFamily="@font/pt_sans_bold"
-                        android:textColor="@color/white"
-                        android:textSize="50dp"
-                        app:layout_constraintBottom_toTopOf="@id/conditionTextView"
-                        app:layout_constraintEnd_toStartOf="@+id/weatherForecastIcon"
-                        app:layout_constraintHorizontal_bias="0.15"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_chainStyle="packed"
-                        tools:text="130°C" />
+                        android:layout_height="250dp"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="30dp"
+                        app:cardElevation="2dp">
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/locationTextView"
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/secondary_green_light">
+
+                            <!-- <View
+                                 android:id="@+id/view1"
+                                 android:layout_width="100dp"
+                                 android:layout_height="100dp"
+                                 android:layout_marginTop="20dp"
+                                 android:background="@drawable/shape_white_circle"
+                                 app:layout_constraintEnd_toEndOf="parent"
+                                 app:layout_constraintStart_toStartOf="parent"
+                                 app:layout_constraintTop_toTopOf="parent" />-->
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/cropDiseaseImage"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:background="@drawable/shape_white_circle"
+                                android:padding="30dp"
+                                android:layout_marginTop="10dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:srcCompat="@drawable/iv_crop_disease_icon" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="Diagnose Your Crop."
+                                android:textColor="@color/primary_green"
+                                android:textAlignment="center"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/pt_sans"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/cropDiseaseImage" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/pt_sans"
-                        android:textColor="@color/white"
-                        android:textSize="25dp"
-                        android:textStyle="italic"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/conditionTextView"
-                        app:layout_constraintTop_toBottomOf="@id/conditionTextView"
-                        tools:text="Navi Mumbai" />
+                        android:layout_height="250dp"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="30dp"
+                        app:cardElevation="2dp">
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/conditionTextView"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/pt_sans"
-                        android:textColor="@color/white"
-                        android:textSize="35dp"
-                        android:textStyle="bold|italic"
-                        app:layout_constraintBottom_toTopOf="@+id/locationTextView"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/temperatureTextView"
-                        app:layout_constraintTop_toBottomOf="@+id/temperatureTextView"
-                        tools:text="Rainy" />
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/secondary_green_light">
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.cardview.widget.CardView>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+                    </androidx.cardview.widget.CardView>
 
-    </androidx.core.widget.NestedScrollView>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
