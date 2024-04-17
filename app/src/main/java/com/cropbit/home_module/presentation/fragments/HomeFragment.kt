@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import coil.load
+import com.cropbit.crop_disease_diagnosis_module.CropDiseaseDiagnosisActivity
 import com.cropbit.databinding.FragmentHomeBinding
 import com.cropbit.home_module.presentation.view_model.HomeViewModel
 import com.cropbit.utils.NetworkResult
@@ -23,6 +24,7 @@ import com.google.android.gms.location.LocationServices
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import splitties.fragments.start
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -33,7 +35,6 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -62,9 +63,9 @@ class HomeFragment : Fragment() {
                 }
                 is NetworkResult.Success ->{
                     lifecycleScope.launch {
-                        delay(3000)
-                        binding.progressContainer.isVisible = false
-                        binding.homeContainer.isVisible = true
+                            delay(3000)
+                            binding.progressContainer.isVisible = false
+                            binding.homeContainer.isVisible = true
                     }
 
                     binding.weatherForecastIcon.load("https:${it.data?.body()?.current?.condition?.icon.toString()}")
@@ -73,6 +74,7 @@ class HomeFragment : Fragment() {
                     binding.conditionTextView.text = it.data?.body()?.current?.condition?.text.toString()
                     binding.locationTextView.text = it.data?.body()?.location?.name.toString()
                 }
+
                 is NetworkResult.Error ->{
                     binding.homeContainer.isVisible = true
                     binding.progressContainer.isVisible = false
@@ -83,6 +85,14 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupUi() {
+
+        binding.btnGoToCropDisease.setOnClickListener {
+            start<CropDiseaseDiagnosisActivity> ()
+        }
+
+        binding.diseaseDiagnosisYourCropTv.setOnClickListener {
+            start<CropDiseaseDiagnosisActivity> ()
+        }
 
     }
 

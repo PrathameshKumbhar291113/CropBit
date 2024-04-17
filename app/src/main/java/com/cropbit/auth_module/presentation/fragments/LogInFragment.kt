@@ -87,7 +87,6 @@ class LogInFragment : Fragment() {
         }
         binding.googleSignInButton.setOnClickListener {
             signInGoogle()
-//            firebaseAuth.signOut()
         }
 
         binding.emailIdEditText.addTextChangedListener {

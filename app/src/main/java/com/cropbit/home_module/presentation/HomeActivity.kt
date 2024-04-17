@@ -102,10 +102,14 @@ class HomeActivity : AppCompatActivity() {
         binding.bottomNavigationView.setOnItemReselectedListener { item ->
             when (item.itemId) {
                 R.id.homeFragment -> {
+                    /*setfragment(HOmeFragment())
+                    * val frasgment=1*/
                     navController.navigate(R.id.homeFragment)
                 }
 
                 R.id.bitBotFragment -> {
+                    /*setfragment(homeFragment)
+                    * val frasgment=2*/
                     navController.navigate(R.id.bitBotFragment)
                 }
 

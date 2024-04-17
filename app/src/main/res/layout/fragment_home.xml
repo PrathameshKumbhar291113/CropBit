@@ -210,7 +210,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="0dp"
-                        android:layout_height="250dp"
+                        android:layout_height="220dp"
                         android:layout_marginHorizontal="10dp"
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
@@ -220,43 +220,77 @@
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:paddingVertical="20dp"
                             android:background="@color/secondary_green_light">
-
-                            <!-- <View
-                                 android:id="@+id/view1"
-                                 android:layout_width="100dp"
-                                 android:layout_height="100dp"
-                                 android:layout_marginTop="20dp"
-                                 android:background="@drawable/shape_white_circle"
-                                 app:layout_constraintEnd_toEndOf="parent"
-                                 app:layout_constraintStart_toStartOf="parent"
-                                 app:layout_constraintTop_toTopOf="parent" />-->
 
                             <androidx.appcompat.widget.AppCompatImageView
                                 android:id="@+id/cropDiseaseImage"
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
+                                android:layout_marginTop="10dp"
                                 android:background="@drawable/shape_white_circle"
                                 android:padding="30dp"
-                                android:layout_marginTop="10dp"
+                                android:scaleType="centerCrop"
+                                app:layout_constraintBottom_toTopOf="@id/diagnosDiseaseTv"
+                                app:layout_constraintDimensionRatio="1:1"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_chainStyle="spread_inside"
                                 app:srcCompat="@drawable/iv_crop_disease_icon" />
 
                             <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/diagnosDiseaseTv"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="10dp"
+                                android:layout_marginTop="20dp"
+                                android:fontFamily="@font/pt_sans_bold"
                                 android:text="Diagnose Your Crop."
-                                android:textColor="@color/primary_green"
                                 android:textAlignment="center"
+                                android:textColor="@color/primary_green"
                                 android:textStyle="bold"
-                                android:fontFamily="@font/pt_sans"
+                                app:layout_constraintBottom_toTopOf="@id/bgView1"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/cropDiseaseImage" />
 
+                            <View
+                                android:id="@+id/bgView1"
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_marginHorizontal="10dp"
+                                android:layout_marginVertical="10dp"
+                                android:background="@drawable/shape_rectangle_corner_10dp_primary_green"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/diagnosDiseaseTv" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/diseaseDiagnosisYourCropTv"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="8dp"
+                                android:fontFamily="@font/pt_sans_bold"
+                                android:text="Diagnos Disease"
+                                android:textColor="@color/white"
+                                android:textSize="14dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/bgView1"
+                                app:layout_constraintEnd_toEndOf="@+id/bgView1"
+                                app:layout_constraintStart_toStartOf="@+id/bgView1"
+                                app:layout_constraintTop_toTopOf="@+id/bgView1" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/btnGoToCropDisease"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:background="@drawable/shape_rectangle_white_corner_3dp"
+                                android:src="@drawable/iv_next_icon"
+                                app:layout_constraintBottom_toBottomOf="@+id/bgView1"
+                                app:layout_constraintEnd_toEndOf="@+id/bgView1"
+                                app:layout_constraintHorizontal_bias="0.95"
+                                app:layout_constraintStart_toStartOf="@+id/bgView1"
+                                app:layout_constraintTop_toTopOf="@+id/bgView1" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -264,7 +298,7 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="0dp"
-                        android:layout_height="250dp"
+                        android:layout_height="220dp"
                         android:layout_marginHorizontal="10dp"
                         android:layout_marginTop="10dp"
                         android:layout_weight="1"
@@ -274,15 +308,173 @@
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:paddingVertical="20dp"
                             android:background="@color/secondary_green_light">
 
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/soilFertilityImage"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/shape_white_circle"
+                                android:padding="30dp"
+                                android:scaleType="centerCrop"
+                                app:layout_constraintBottom_toTopOf="@id/soilFertilityTv"
+                                app:layout_constraintDimensionRatio="1:1"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_chainStyle="spread_inside"
+                                app:srcCompat="@drawable/iv_soil_fertility_icon" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/soilFertilityTv"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dp"
+                                android:fontFamily="@font/pt_sans_bold"
+                                android:text="Check Soil Fertility"
+                                android:textAlignment="center"
+                                android:textColor="@color/primary_green"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toTopOf="@id/bgView2"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/soilFertilityImage" />
+
+                            <View
+                                android:id="@+id/bgView2"
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_marginHorizontal="10dp"
+                                android:layout_marginVertical="10dp"
+                                android:background="@drawable/shape_rectangle_corner_10dp_primary_green"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/soilFertilityTv" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/soilFertilityDetectionTv"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="8dp"
+                                android:fontFamily="@font/pt_sans_bold"
+                                android:text="Check Fertility"
+                                android:textColor="@color/white"
+                                android:textSize="14dp"
+                                app:layout_constraintBottom_toBottomOf="@+id/bgView2"
+                                app:layout_constraintEnd_toEndOf="@+id/bgView2"
+                                app:layout_constraintStart_toStartOf="@+id/bgView2"
+                                app:layout_constraintTop_toTopOf="@+id/bgView2" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/btnGoToSoilFertility"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:background="@drawable/shape_rectangle_white_corner_3dp"
+                                android:src="@drawable/iv_next_icon"
+                                app:layout_constraintBottom_toBottomOf="@+id/bgView2"
+                                app:layout_constraintEnd_toEndOf="@+id/bgView2"
+                                app:layout_constraintHorizontal_bias="0.95"
+                                app:layout_constraintStart_toStartOf="@+id/bgView2"
+                                app:layout_constraintTop_toTopOf="@+id/bgView2" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                     </androidx.cardview.widget.CardView>
 
-
                 </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="20dp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="30dp"
+                    app:cardElevation="2dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/secondary_green_light"
+                        >
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/fertilizerCalciImage"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/shape_white_circle"
+                            android:padding="30dp"
+                            android:scaleType="centerCrop"
+                            app:layout_constraintVertical_bias="0.0"
+                            app:layout_constraintBottom_toTopOf="@id/fertilizerCalciTv"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_chainStyle="packed"
+                            app:srcCompat="@drawable/iv_fertilizer_calculator" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/fertilizerCalciTv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:fontFamily="@font/pt_sans_bold"
+                            android:text="Tailor fertilizer to farm size"
+                            android:textAlignment="center"
+                            android:textColor="@color/primary_green"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@id/bgView3"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/fertilizerCalciImage" />
+
+                        <View
+                            android:id="@+id/bgView3"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginHorizontal="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@drawable/shape_rectangle_corner_10dp_primary_green"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/fertilizerCalciTv" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/fertilizerCalculatorTv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="8dp"
+                            android:fontFamily="@font/pt_sans_bold"
+                            android:text="Fertilizer Metrix"
+                            android:textColor="@color/white"
+                            android:textSize="14dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/bgView3"
+                            app:layout_constraintEnd_toEndOf="@+id/bgView3"
+                            app:layout_constraintStart_toStartOf="@+id/bgView3"
+                            app:layout_constraintTop_toTopOf="@+id/bgView3" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/btnGoToFertilizerMetrix"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:background="@drawable/shape_rectangle_white_corner_3dp"
+                            android:src="@drawable/iv_next_icon"
+                            app:layout_constraintBottom_toBottomOf="@+id/bgView3"
+                            app:layout_constraintEnd_toEndOf="@+id/bgView3"
+                            app:layout_constraintHorizontal_bias="0.95"
+                            app:layout_constraintStart_toStartOf="@+id/bgView3"
+                            app:layout_constraintTop_toTopOf="@+id/bgView3" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
