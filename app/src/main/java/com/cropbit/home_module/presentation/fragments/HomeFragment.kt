@@ -15,8 +15,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import coil.load
+import com.cropbit.check_soil_fertility_module.CheckSoilFertilityActivity
 import com.cropbit.crop_disease_diagnosis_module.CropDiseaseDiagnosisActivity
 import com.cropbit.databinding.FragmentHomeBinding
+import com.cropbit.fertilizer_matrix_module.FertilizerMatrixActivity
 import com.cropbit.home_module.presentation.view_model.HomeViewModel
 import com.cropbit.utils.NetworkResult
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -92,6 +94,22 @@ class HomeFragment : Fragment() {
 
         binding.diseaseDiagnosisYourCropTv.setOnClickListener {
             start<CropDiseaseDiagnosisActivity> ()
+        }
+
+        binding.btnGoToSoilFertility.setOnClickListener {
+            start<CheckSoilFertilityActivity> ()
+        }
+
+        binding.soilFertilityDetectionTv.setOnClickListener {
+            start<CheckSoilFertilityActivity> ()
+        }
+
+        binding.btnGoToFertilizerMetrix.setOnClickListener {
+            start<FertilizerMatrixActivity> ()
+        }
+
+        binding.fertilizerCalculatorTv.setOnClickListener {
+            start<FertilizerMatrixActivity> ()
         }
 
     }

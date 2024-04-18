@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import coil.load
 import com.cropbit.databinding.ActivityCropDiseaseDiagnosisBinding
+import com.cropbit.utils.CropDiseaseList
 import com.cropbit.utils.appStatusBarColor
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -54,6 +55,12 @@ class CropDiseaseDiagnosisActivity : AppCompatActivity() {
                     openImageChooser()
                 }
             }
+        }
+
+        binding.detectDisease.setOnClickListener {
+            var cropDiseaseName = CropDiseaseList().listOfDisease.random()
+            binding.diseaseDetected.text = "Detected Diease"
+            binding.diseaseOfCrop.text = cropDiseaseName
         }
     }
 

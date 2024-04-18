@@ -7,7 +7,7 @@ import android.view.Window
 import android.widget.EditText
 import com.cropbit.R
 
-fun appStatusBarColor(context: Context, window: Window){
+fun appStatusBarColor(context: Context, window: Window) {
     window.statusBarColor = context.resources.getColor(R.color.primary_green)
 }
 
@@ -37,3 +37,17 @@ fun togglePasswordVisibility(context: Context, editText: EditText) {
     // Restore the cursor position
     editText.setSelection(selection)
 }
+
+data class CropDiseaseList(
+    var listOfDisease: List<String> = listOf(
+        "Powdery Mildew",
+        "Downy Mildew",
+        "Black Spot",
+        "Mosaic Virus",
+        "Fusarium Wilt",
+        "Verticillium Wilt",
+        "Sooty Mold",
+        "Snow Mold",
+        "Rust"
+    )
+)

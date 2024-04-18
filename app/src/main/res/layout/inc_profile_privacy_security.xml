@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivSettings"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/iv_privacy_security"
+        app:layout_constraintBottom_toBottomOf="@id/privacySecurityTitle"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineStart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/privacySecurityTitle" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/privacySecurityTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/pt_sans_bold"
+        android:text="Privacy &amp; Security"
+        android:textColor="@color/secondary_dark"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@id/settingPrivacyDetails"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivPrivacy"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/iv_privacy"
+        app:layout_constraintBottom_toBottomOf="@id/settingPrivacyDetails"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineStart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/settingPrivacyDetails" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/settingPrivacyDetails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/pt_sans"
+        android:text="Privacy"
+        android:textColor="@color/secondary_dark"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@id/settingTermsAndConditionsDetails"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
+        app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+        app:layout_constraintTop_toBottomOf="@id/privacySecurityTitle" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivPrivacyNext"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="center"
+        android:src="@drawable/iv_next_img_btn"
+        app:layout_constraintBottom_toBottomOf="@id/settingPrivacyDetails"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guidelineEnd"
+        app:layout_constraintTop_toTopOf="@id/settingPrivacyDetails" />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivTermsAndConditions"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:scaleType="center"
+        android:src="@drawable/iv_security"
+        app:layout_constraintBottom_toBottomOf="@id/settingTermsAndConditionsDetails"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineStart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/settingTermsAndConditionsDetails" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/settingTermsAndConditionsDetails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/pt_sans"
+        android:text="Tems &amp; Conditions"
+        android:textColor="@color/secondary_dark"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
+        app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+        app:layout_constraintTop_toBottomOf="@id/settingPrivacyDetails" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivTermsAndConditionsNext"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="center"
+        android:src="@drawable/iv_next_img_btn"
+        app:layout_constraintBottom_toBottomOf="@id/settingTermsAndConditionsDetails"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guidelineEnd"
+        app:layout_constraintTop_toTopOf="@id/settingTermsAndConditionsDetails" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

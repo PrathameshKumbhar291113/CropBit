@@ -11,4 +11,5 @@
     <color name="medium_dark_grey1">#9C9C9C</color>
     <color name="medium_dark_grey2">#B0ABAB</color>
     <color name="secondary_green_light">#BEE3CB</color>
+    <color name="red_dark_500">#F44336</color>
 </resources>

@@ -237,7 +237,7 @@
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:layout_constraintVertical_chainStyle="spread_inside"
-                                app:srcCompat="@drawable/iv_crop_disease_icon" />
+                                app:srcCompat="@drawable/iv_fertilizer_calculator" />
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/diagnosDiseaseTv"
@@ -398,8 +398,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/secondary_green_light"
-                        >
+                        android:background="@color/secondary_green_light">
 
                         <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/fertilizerCalciImage"
@@ -416,7 +415,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintVertical_chainStyle="packed"
-                            app:srcCompat="@drawable/iv_fertilizer_calculator" />
+                            app:srcCompat="@drawable/iv_crop_disease_icon" />
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/fertilizerCalciTv"

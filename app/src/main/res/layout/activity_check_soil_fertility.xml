@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".crop_disease_diagnosis_module.CropDiseaseDiagnosisActivity">
+    tools:context=".check_soil_fertility_module.CheckSoilFertilityActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolBar"
@@ -24,7 +24,7 @@
             android:layout_marginEnd="5dp"
             android:fontFamily="@font/pt_sans_bold"
             android:paddingStart="15dp"
-            android:text="Disease Diagnosis"
+            android:text="Soil Fertility"
             android:textAlignment="textStart"
             android:textColor="@color/white"
             android:textSize="30dp"
@@ -49,74 +49,115 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/noteText"
+        android:id="@+id/soilFertilityTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
         android:fontFamily="@font/pt_sans_bold"
-        android:paddingHorizontal="8dp"
-        android:text="NOTE: Please select an image from your device for disease diagnosis by clicking on the image below."
-        android:textAlignment="textStart"
-        android:textColor="@color/secondary_dark"
-        android:textSize="20dp"
+        android:text="Check Soil Fertility"
+        android:textColor="@color/primary_green"
+        android:textSize="30dp"
+        android:layout_marginTop="30dp"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolBar" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/selectedCropImage"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintDimensionRatio="1:1"
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editTextN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/iv_n"
+        android:drawableEnd="@drawable/iv_percent"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/pt_sans"
+        android:textColor="@color/primary_green"
+        android:hint="Enter Nitrogen Percent"
+        android:drawablePadding="10dp"
+        android:inputType="numberDecimal"
+        android:textColorHint="@color/primary_green"
+        android:layout_marginHorizontal="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/noteText"
-        app:srcCompat="@drawable/iv_fertilizer_calculator" />
+        app:layout_constraintTop_toBottomOf="@+id/soilFertilityTv" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editTextP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/iv_p"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/pt_sans"
+        android:textColor="@color/primary_green"
+        android:hint="Enter Phosporous Percent"
+        android:drawablePadding="10dp"
+        android:inputType="numberDecimal"
+        android:textColorHint="@color/primary_green"
+        android:drawableEnd="@drawable/iv_percent"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextN" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/editTextK"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/iv_k"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/pt_sans"
+        android:textColor="@color/primary_green"
+        android:hint="Enter Potassium Percent"
+        android:drawablePadding="10dp"
+        android:inputType="numberDecimal"
+        android:textColorHint="@color/primary_green"
+        android:drawableEnd="@drawable/iv_percent"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextP" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/detectDisease"
+        android:id="@+id/btnCheckFertility"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/shape_rectangle_corner_10dp_primary_green"
-        android:text="Detect Disease"
+        android:text="Check Fertility"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectedCropImage" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextK" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/diseaseDetected"
+        android:id="@+id/resultForSoilFertilityTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="30dp"
         android:fontFamily="@font/pt_sans_bold"
         android:textAlignment="center"
-        android:textColor="@color/primary_green"
+        android:textColor="@color/secondary_dark"
         android:textSize="20dp"
         app:layout_constraintVertical_bias="0.1"
-        app:layout_constraintBottom_toTopOf="@id/diseaseOfCrop"
+        app:layout_constraintBottom_toTopOf="@id/resultForSoilFertilityValue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/detectDisease"
+        app:layout_constraintTop_toBottomOf="@id/btnCheckFertility"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/diseaseOfCrop"
+        android:id="@+id/resultForSoilFertilityValue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/pt_sans_bold"
         android:textAlignment="center"
-        android:textColor="@color/red_500"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/diseaseDetected" />
+        app:layout_constraintTop_toBottomOf="@+id/resultForSoilFertilityTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

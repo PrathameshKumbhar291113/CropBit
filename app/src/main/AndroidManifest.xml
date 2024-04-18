@@ -6,9 +6,11 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
-    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
 
     <application
@@ -22,6 +24,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CropBit"
         tools:targetApi="31">
+        <activity
+            android:name=".fertilizer_matrix_module.FertilizerMatrixActivity"
+            android:exported="false"
+             android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".check_soil_fertility_module.CheckSoilFertilityActivity"
+            android:exported="false"
+             android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".crop_disease_diagnosis_module.CropDiseaseDiagnosisActivity"
             android:exported="false"
