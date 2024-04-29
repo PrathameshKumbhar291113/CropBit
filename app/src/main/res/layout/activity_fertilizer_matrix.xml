@@ -50,189 +50,209 @@
             app:srcCompat="@drawable/cropbit_logo" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/soilFertilityTv"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/pt_sans_bold"
-        android:text="Fertilizer Quantity Calculator"
-        android:textAlignment="center"
-        android:textColor="@color/primary_green"
-        android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolBar" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/editTextN"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="40dp"
-        android:drawableStart="@drawable/iv_n"
-        android:drawableEnd="@drawable/iv_percent"
-        android:drawablePadding="10dp"
-        android:fontFamily="@font/pt_sans"
-        android:hint="Enter Nitrogen Percent"
-        android:inputType="numberDecimal"
-        android:textColor="@color/primary_green"
-        android:textColorHint="@color/primary_green"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/soilFertilityTv" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/editTextP"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="20dp"
-        android:drawableStart="@drawable/iv_p"
-        android:drawableEnd="@drawable/iv_percent"
-        android:drawablePadding="10dp"
-        android:fontFamily="@font/pt_sans"
-        android:hint="Enter Phosporous Percent"
-        android:inputType="numberDecimal"
-        android:textColor="@color/primary_green"
-        android:textColorHint="@color/primary_green"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextN" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/editTextK"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="20dp"
-        android:drawableStart="@drawable/iv_k"
-        android:drawableEnd="@drawable/iv_percent"
-        android:drawablePadding="10dp"
-        android:fontFamily="@font/pt_sans"
-        android:hint="Enter Potassium Percent"
-        android:inputType="numberDecimal"
-        android:textColor="@color/primary_green"
-        android:textColorHint="@color/primary_green"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextP" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/fertilizerQuantityTv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:fontFamily="@font/pt_sans_bold"
-        android:text="Enter the area of land (in Acre)"
-        android:textAlignment="center"
-        android:textColor="@color/secondary_dark"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextK"/>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/fertilizerCalculatorContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="3"
-        android:layout_marginTop="30dp"
-        android:paddingHorizontal="20dp"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fertilizerQuantityTv">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/btnSubtract"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@drawable/shape_oval_primary_green_backgound"
-            android:scaleType="fitCenter"
-            android:src="@drawable/iv_minus"
-            app:layout_constraintEnd_toStartOf="@id/areaOfLandTextValue"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/areaOfLandTextValue"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginHorizontal="20dp"
-            android:fontFamily="@font/pt_sans_bold"
-            android:text="0"
-            android:textAlignment="center"
-            android:textColor="@color/primary_green"
-            android:textSize="40dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnAdd"
-            app:layout_constraintStart_toEndOf="@+id/btnSubtract"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/btnAdd"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@drawable/shape_oval_primary_green_backgound"
-            android:src="@drawable/iv_add"
-            app:layout_constraintStart_toEndOf="@id/areaOfLandTextValue"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnCheckFertility"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:background="@drawable/shape_rectangle_corner_10dp_primary_green"
-        android:text="Calculate Quantity"
-        android:textColor="@color/white"
-        android:layout_marginTop="30dp"
-        app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintBottom_toTopOf="@id/resultForSoilFertilityTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fertilizerCalculatorContainer"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/resultForSoilFertilityTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/pt_sans_bold"
-        android:textAlignment="center"
-        android:textColor="@color/secondary_dark"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toTopOf="@id/resultForSoilFertilityValue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnCheckFertility"
-        app:layout_constraintVertical_bias="1.0"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/resultForSoilFertilityValue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/pt_sans_bold"
-        android:textAlignment="center"
-        android:textSize="20dp"
-        android:textColor="@color/primary_green"
+        android:layout_height="0dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resultForSoilFertilityTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/toolBar">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/soilFertilityTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/pt_sans_bold"
+                android:text="Fertilizer Quantity Calculator"
+                android:textAlignment="center"
+                android:textColor="@color/primary_green"
+                android:textSize="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolBar" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextN"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="40dp"
+                android:drawableStart="@drawable/iv_n"
+                android:drawableEnd="@drawable/iv_percent"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/pt_sans"
+                android:hint="Enter Nitrogen Percent"
+                android:inputType="numberDecimal"
+                android:textColor="@color/primary_green"
+                android:textColorHint="@color/primary_green"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/soilFertilityTv" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:drawableStart="@drawable/iv_p"
+                android:drawableEnd="@drawable/iv_percent"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/pt_sans"
+                android:hint="Enter Phosporous Percent"
+                android:inputType="numberDecimal"
+                android:textColor="@color/primary_green"
+                android:textColorHint="@color/primary_green"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextN" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextK"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:drawableStart="@drawable/iv_k"
+                android:drawableEnd="@drawable/iv_percent"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/pt_sans"
+                android:hint="Enter Potassium Percent"
+                android:inputType="numberDecimal"
+                android:textColor="@color/primary_green"
+                android:textColorHint="@color/primary_green"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextP" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/fertilizerQuantityTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/pt_sans_bold"
+                android:text="Enter the area of land (in Acre)"
+                android:textAlignment="center"
+                android:textColor="@color/secondary_dark"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/editTextK" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fertilizerCalculatorContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingHorizontal="20dp"
+                android:weightSum="3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fertilizerQuantityTv">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/btnSubtract"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_oval_primary_green_backgound"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/iv_minus"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/areaOfLandTextValue"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/areaOfLandTextValue"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:fontFamily="@font/pt_sans_bold"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textColor="@color/primary_green"
+                    android:textSize="40dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/btnAdd"
+                    app:layout_constraintStart_toEndOf="@+id/btnSubtract"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/btnAdd"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_oval_primary_green_backgound"
+                    android:src="@drawable/iv_add"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/areaOfLandTextValue"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnCheckFertility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/shape_rectangle_corner_10dp_primary_green"
+                android:text="Calculate Quantity"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@id/resultForSoilFertilityTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fertilizerCalculatorContainer"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/resultForSoilFertilityTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/pt_sans_bold"
+                android:textAlignment="center"
+                android:textColor="@color/secondary_dark"
+                android:textSize="16dp"
+                app:layout_constraintBottom_toTopOf="@id/resultForSoilFertilityValue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnCheckFertility"
+                app:layout_constraintVertical_bias="1.0"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/resultForSoilFertilityValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/pt_sans_bold"
+                android:textAlignment="center"
+                android:textColor="@color/primary_green"
+                android:textSize="20dp"
+                android:layout_marginBottom="50dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/resultForSoilFertilityTitle" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

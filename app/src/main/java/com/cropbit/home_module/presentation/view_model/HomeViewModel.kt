@@ -41,13 +41,15 @@ class HomeViewModel @Inject constructor(
 
         weatherForecastUseCase(weatherForecastApiRequest).onEach {
             when (it) {
-                is NetworkResult.Loading -> {}
+                is NetworkResult.Loading -> {
+                    Log.e("weather_api", "loading response: ${it.data?.body().toString()}")
+                }
                 is NetworkResult.Success -> {
                     _currentWeatherResponse.postValue(it)
-                    Log.e("weather_api", "getCurrentWeatherForecast response: ${it.data?.body().toString()}")
+                    Log.e("weather_api", "success response: ${it.data?.body().toString()}")
                 }
                 is NetworkResult.Error -> {
-
+                    Log.e("weather_api", "error response: ${it.data?.body().toString()}")
                 }
             }
         }.launchIn(viewModelScope)

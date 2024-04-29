@@ -22,7 +22,8 @@ object CropBitApplicationModule {
             .addInterceptor { chain ->
                 val original = chain.request()
                 val requestBuilder = original.newBuilder()
-                    .header("Authorization", "Bearer ${ApiConstants.CHAT_BOT_API_KEY}")
+                    .addHeader("Content-Type", "application/json")
+                    .addHeader("Authorization", "Bearer ${ApiConstants.CHAT_BOT_API_KEY}")
                 val request = requestBuilder.build()
                 chain.proceed(request)
             }
