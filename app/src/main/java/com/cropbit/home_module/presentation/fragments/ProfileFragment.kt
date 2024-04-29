@@ -1,12 +1,21 @@
 package com.cropbit.home_module.presentation.fragments
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import com.cropbit.SplashActivity
 import com.cropbit.databinding.FragmentProfileBinding
+import com.cropbit.utils.BundleConstants
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import splitties.fragments.start
 
 
 @AndroidEntryPoint
@@ -30,5 +39,23 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        binding.logoutContainer.setOnClickListener {
+
+            lifecycleScope.launch() {
+                Toast.makeText(requireContext(), "Successfully LoggedOut.", Toast.LENGTH_SHORT)
+                    .show()
+                delay(1000)
+                start<SplashActivity>() {
+                    val sharePrefLogin: SharedPreferences =
+                        requireContext().getSharedPreferences(BundleConstants.LOGIN, Context.MODE_PRIVATE)
+                    var editor : SharedPreferences.Editor = sharePrefLogin.edit()
+                    editor.putBoolean(BundleConstants.IS_LOGIN_COMPLETED,false)
+                    editor.apply()
+                    requireActivity().finish()
+                }
+            }
+
+        }
     }
 }

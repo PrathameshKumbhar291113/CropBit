@@ -6,6 +6,7 @@ import android.text.method.PasswordTransformationMethod
 import android.view.Window
 import android.widget.EditText
 import com.cropbit.R
+import kotlin.math.floor
 
 fun appStatusBarColor(context: Context, window: Window) {
     window.statusBarColor = context.resources.getColor(R.color.primary_green)
@@ -51,3 +52,8 @@ data class CropDiseaseList(
         "Rust"
     )
 )
+
+
+fun convertToScaledValue(amount: Double): Double {
+    return floor(amount/ 10.0)
+}

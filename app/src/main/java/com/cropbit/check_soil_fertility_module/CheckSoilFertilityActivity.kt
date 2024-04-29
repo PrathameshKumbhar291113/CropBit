@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat
 import com.cropbit.R
 import com.cropbit.databinding.ActivityCheckSoilFertilityBinding
 import com.cropbit.utils.appStatusBarColor
+import com.cropbit.utils.convertToScaledValue
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.abs
 
@@ -41,7 +42,7 @@ class CheckSoilFertilityActivity : AppCompatActivity() {
         val idealRatio1 = listOf(4.0, 2.0, 1.0)
         val idealRatio2 = listOf(3.0, 1.0, 2.0)
 
-        val actualRatio = listOf(nitrogen, phosphorus, potassium)
+        val actualRatio = listOf(convertToScaledValue(nitrogen), convertToScaledValue(phosphorus), convertToScaledValue(potassium))
 
         val tolerance = 0.1
         val isRatio1 = actualRatio.zip(idealRatio1).all { (actual, ideal) ->
@@ -54,4 +55,6 @@ class CheckSoilFertilityActivity : AppCompatActivity() {
 
         return isRatio1 || isRatio2
     }
+
+
 }

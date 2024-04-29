@@ -68,15 +68,25 @@
         android:layout_width="0dp"
         android:layout_height="200dp"
         android:layout_marginTop="30dp"
+        android:visibility="invisible"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/noteText"
-        app:srcCompat="@drawable/iv_fertilizer_calculator" />
+        app:layout_constraintTop_toBottomOf="@+id/noteText" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/iv_fertilizer_calculator"
+        app:layout_constraintBottom_toBottomOf="@+id/selectedCropImage"
+        app:layout_constraintEnd_toEndOf="@+id/selectedCropImage"
+        app:layout_constraintStart_toStartOf="@+id/selectedCropImage"
+        app:layout_constraintTop_toTopOf="@+id/selectedCropImage" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/detectDisease"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="30dp"
@@ -84,6 +94,20 @@
         android:text="Detect Disease"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/selectImage"
+        app:layout_constraintTop_toBottomOf="@+id/selectedCropImage" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/selectImage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/shape_rectangle_corner_10dp_primary_green"
+        android:text="Select Plant Image"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/detectDisease"
+        app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selectedCropImage" />
 
@@ -97,11 +121,11 @@
         android:textAlignment="center"
         android:textColor="@color/primary_green"
         android:textSize="20dp"
-        app:layout_constraintVertical_bias="0.1"
         app:layout_constraintBottom_toTopOf="@id/diseaseOfCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/detectDisease"
+        app:layout_constraintVertical_bias="0.1"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <androidx.appcompat.widget.AppCompatTextView

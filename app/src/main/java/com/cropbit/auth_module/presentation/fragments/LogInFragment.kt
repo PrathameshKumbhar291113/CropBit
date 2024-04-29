@@ -2,6 +2,8 @@ package com.cropbit.auth_module.presentation.fragments
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -16,6 +18,7 @@ import androidx.navigation.fragment.findNavController
 import com.cropbit.R
 import com.cropbit.databinding.FragmentLogInBinding
 import com.cropbit.home_module.presentation.HomeActivity
+import com.cropbit.utils.BundleConstants
 import com.cropbit.utils.togglePasswordVisibility
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -61,9 +64,7 @@ class LogInFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setupUi()
-
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -98,21 +99,28 @@ class LogInFragment : Fragment() {
         }
 
         binding.loginButton.setOnClickListener {
-            /*firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+            firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                 if (it.isSuccessful) {
                     lifecycleScope.launch {
                         Toast.makeText(requireContext(), "Successfully LoggedIn.", Toast.LENGTH_SHORT).show()
+
                         delay(1000)
-                        start<HomeActivity>()
-                        requireActivity().finish()
+                        start<HomeActivity>(){
+                            val sharePrefLogin: SharedPreferences =
+                                requireContext().getSharedPreferences(BundleConstants.LOGIN, Context.MODE_PRIVATE)
+                            var editor : SharedPreferences.Editor = sharePrefLogin.edit()
+                            editor.putBoolean(BundleConstants.IS_LOGIN_COMPLETED,true)
+                            editor.apply()
+
+                            requireActivity().finish()
+                        }
+
+
                     }
                 } else {
                     Toast.makeText(requireContext(), "${it.exception}", Toast.LENGTH_SHORT).show()
                 }
-            }*/
-
-            start<HomeActivity>()
-            requireActivity().finish()
+            }
         }
     }
 
@@ -127,7 +135,6 @@ class LogInFragment : Fragment() {
             if (activityResult.resultCode == Activity.RESULT_OK) {
                 val task = GoogleSignIn.getSignedInAccountFromIntent(activityResult.data)
                 handleActivityResult(task)
-
             }
         }
 
@@ -153,8 +160,14 @@ class LogInFragment : Fragment() {
                     Toast.makeText(requireContext(), "Successfully LoggedIn.", Toast.LENGTH_SHORT)
                         .show()
                     delay(1000)
-                    start<HomeActivity>()
-                    requireActivity().finish()
+                    start<HomeActivity>() {
+                        val sharePrefLogin: SharedPreferences =
+                            requireContext().getSharedPreferences(BundleConstants.LOGIN, Context.MODE_PRIVATE)
+                        var editor : SharedPreferences.Editor = sharePrefLogin.edit()
+                        editor.putBoolean(BundleConstants.IS_LOGIN_COMPLETED,true)
+                        editor.apply()
+                        requireActivity().finish()
+                    }
                 }
             } else {
 
