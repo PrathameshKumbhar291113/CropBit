@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.cropbit.SplashActivity
 import com.cropbit.databinding.FragmentProfileBinding
+import com.cropbit.home_module.presentation.PrivacyPolicyActivity
 import com.cropbit.utils.BundleConstants
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
@@ -39,6 +40,17 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+       setupUi()
+    }
+
+    private fun setupUi() {
+
+        binding.incPrivacySecurity.settingPrivacyDetails.setOnClickListener {
+            start<PrivacyPolicyActivity>()
+        }
+        binding.incPrivacySecurity.ivPrivacyNext.setOnClickListener {
+            start<PrivacyPolicyActivity>()
+        }
 
         binding.logoutContainer.setOnClickListener {
 
@@ -57,5 +69,6 @@ class ProfileFragment : Fragment() {
             }
 
         }
+
     }
 }

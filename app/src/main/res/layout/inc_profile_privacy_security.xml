@@ -61,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:fontFamily="@font/pt_sans"
-        android:text="Privacy"
+        android:text="Privacy &amp; Policy"
         android:textColor="@color/secondary_dark"
         android:textSize="16dp"
         app:layout_constraintBottom_toTopOf="@id/settingTermsAndConditionsDetails"

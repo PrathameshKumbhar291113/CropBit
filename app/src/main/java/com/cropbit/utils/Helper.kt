@@ -57,3 +57,33 @@ data class CropDiseaseList(
 fun convertToScaledValue(amount: Double): Double {
     return floor(amount/ 10.0)
 }
+
+fun calculateSoilFertilityAverage(
+    pHValue: Float, eCValue: Float, calciumValue: Float, organicValue: Float,
+    ferrousValue: Float, manganeseValue: Float, copperValue: Float, zincValue: Float,
+    nitrogenLevel: Float, phosphorusLevel: Float, potassiumLevel: Float
+): Float {
+    val pH = pHValue / 100f
+    val eC = eCValue / 100f
+    val calcium = calciumValue / 100f
+    val organic = organicValue / 100f
+    val ferrous = ferrousValue / 100f
+    val manganese = manganeseValue / 100f
+    val copper = copperValue / 100f
+    val zinc = zincValue / 100f
+    val nitrogen = nitrogenLevel / 100f
+    val phosphorus = phosphorusLevel / 100f
+    val potassium = potassiumLevel / 100f
+
+    return (pH + eC + calcium + organic + ferrous +
+            manganese + copper + zinc + nitrogen +
+            phosphorus + potassium) / 11f
+}
+
+fun classifyFertilityValue(value: Float): String {
+    return when {
+        value < 0.04 -> "Bad"
+        value >= 0.04 && value < 0.07 -> "Normal"
+        else -> "Good"
+    }
+}

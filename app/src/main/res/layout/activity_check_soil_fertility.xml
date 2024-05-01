@@ -56,81 +56,191 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolBar">
+        app:layout_constraintTop_toBottomOf="@id/toolBar"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/soilFertilityTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
                 android:fontFamily="@font/pt_sans_bold"
                 android:text="Check Soil Fertility"
-                android:textColor="@color/primary_green"
-                android:textSize="30dp"
-                android:layout_marginTop="30dp"
                 android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/toolBar" />
+                android:textColor="@color/primary_green"
+                android:textSize="30dp" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextph"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="40dp"
+                android:drawableStart="@drawable/ph"
+                android:drawableEnd="@drawable/iv_percent"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/pt_sans"
+                android:hint="Enter pH Percent"
+                android:inputType="numberDecimal"
+                android:textColor="@color/primary_green"
+                android:textColorHint="@color/primary_green" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextEc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:drawableStart="@drawable/ec"
+                android:drawableEnd="@drawable/iv_percent"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/pt_sans"
+                android:hint="Enter EC Percent"
+                android:inputType="numberDecimal"
+                android:textColor="@color/primary_green"
+                android:textColorHint="@color/primary_green" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextCalcium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:drawableStart="@drawable/ca"
+                android:drawableEnd="@drawable/iv_percent"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/pt_sans"
+                android:hint="Enter EC Percent"
+                android:inputType="numberDecimal"
+                android:textColor="@color/primary_green"
+                android:textColorHint="@color/primary_green" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextOrganic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:drawableStart="@drawable/o"
+                android:drawableEnd="@drawable/iv_percent"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/pt_sans"
+                android:hint="Enter Organic Percent"
+                android:inputType="numberDecimal"
+                android:textColor="@color/primary_green"
+                android:textColorHint="@color/primary_green" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextFerrous"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:drawableStart="@drawable/fe"
+                android:drawableEnd="@drawable/iv_percent"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/pt_sans"
+                android:hint="Enter Ferrous Percent"
+                android:inputType="numberDecimal"
+                android:textColor="@color/primary_green"
+                android:textColorHint="@color/primary_green" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextManganese"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:drawableStart="@drawable/ca"
+                android:drawableEnd="@drawable/iv_percent"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/pt_sans"
+                android:hint="Enter Manganese Percent"
+                android:inputType="numberDecimal"
+                android:textColor="@color/primary_green"
+                android:textColorHint="@color/primary_green" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextCopper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:drawableStart="@drawable/cu"
+                android:drawableEnd="@drawable/iv_percent"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/pt_sans"
+                android:hint="Enter Copper Percent"
+                android:inputType="numberDecimal"
+                android:textColor="@color/primary_green"
+                android:textColorHint="@color/primary_green" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/editTextZinc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:drawableStart="@drawable/zn"
+                android:drawableEnd="@drawable/iv_percent"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/pt_sans"
+                android:hint="Enter Zinc Percent"
+                android:inputType="numberDecimal"
+                android:textColor="@color/primary_green"
+                android:textColorHint="@color/primary_green" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/editTextN"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
                 android:drawableStart="@drawable/iv_n"
                 android:drawableEnd="@drawable/iv_percent"
-                android:layout_marginTop="40dp"
-                android:fontFamily="@font/pt_sans"
-                android:textColor="@color/primary_green"
-                android:hint="Enter Nitrogen Percent"
                 android:drawablePadding="10dp"
+                android:fontFamily="@font/pt_sans"
+                android:hint="Enter Nitrogen Percent"
                 android:inputType="numberDecimal"
-                android:textColorHint="@color/primary_green"
-                android:layout_marginHorizontal="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/soilFertilityTv" />
+                android:textColor="@color/primary_green"
+                android:textColorHint="@color/primary_green" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/editTextP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/iv_p"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/pt_sans"
-                android:textColor="@color/primary_green"
-                android:hint="Enter Phosporous Percent"
-                android:drawablePadding="10dp"
-                android:inputType="numberDecimal"
-                android:textColorHint="@color/primary_green"
-                android:drawableEnd="@drawable/iv_percent"
                 android:layout_marginHorizontal="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextN" />
+                android:layout_marginTop="20dp"
+                android:drawableStart="@drawable/iv_p"
+                android:drawableEnd="@drawable/iv_percent"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/pt_sans"
+                android:hint="Enter Phosporous Percent"
+                android:inputType="numberDecimal"
+                android:textColor="@color/primary_green"
+                android:textColorHint="@color/primary_green" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/editTextK"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/iv_k"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/pt_sans"
-                android:textColor="@color/primary_green"
-                android:hint="Enter Potassium Percent"
-                android:drawablePadding="10dp"
-                android:inputType="numberDecimal"
-                android:textColorHint="@color/primary_green"
-                android:drawableEnd="@drawable/iv_percent"
                 android:layout_marginHorizontal="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextP" />
+                android:layout_marginTop="20dp"
+                android:drawableStart="@drawable/iv_k"
+                android:drawableEnd="@drawable/iv_percent"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/pt_sans"
+                android:hint="Enter Potassium Percent"
+                android:inputType="numberDecimal"
+                android:textColor="@color/primary_green"
+                android:textColorHint="@color/primary_green" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnCheckFertility"
@@ -140,10 +250,7 @@
                 android:layout_marginTop="50dp"
                 android:background="@drawable/shape_rectangle_corner_10dp_primary_green"
                 android:text="Check Fertility"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextK" />
+                android:textColor="@color/white" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/resultForSoilFertilityTitle"
@@ -154,27 +261,18 @@
                 android:fontFamily="@font/pt_sans_bold"
                 android:textAlignment="center"
                 android:textColor="@color/secondary_dark"
-                android:textSize="20dp"
-                app:layout_constraintVertical_bias="0.1"
-                app:layout_constraintBottom_toTopOf="@id/resultForSoilFertilityValue"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/btnCheckFertility"
-                app:layout_constraintVertical_chainStyle="packed" />
+                android:textSize="20dp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/resultForSoilFertilityValue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
+                android:layout_marginBottom="50dp"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/pt_sans_bold"
                 android:textAlignment="center"
-                android:textSize="30dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/resultForSoilFertilityTitle" />
+                android:textSize="25dp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
