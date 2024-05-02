@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/primary_green">
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -26,7 +27,7 @@
         android:layout_height="0dp"
         android:fontFamily="@font/pt_sans_bold"
         android:gravity="center"
-        android:text="ST"
+        tools:text="ST"
         android:textAlignment="center"
         android:textColor="@color/primary_green"
         android:textSize="25dp"
@@ -56,44 +57,45 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/pt_sans_bold"
-        android:text="Suraj R. T."
+        tools:text="Suraj R. T."
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@id/userMobileNumber"
+        app:layout_constraintBottom_toTopOf="@id/userEmailId"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nameInitialView" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/userMobileNumber"
+        android:id="@+id/userEmailId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         android:fontFamily="@font/pt_sans"
-        android:text="+91 9082379158"
+        tools:text="surajTambe@gmail.com"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@id/userAge"
+        app:layout_constraintBottom_toTopOf="@id/userMobileNumber"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/userFullName" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/userAge"
+        android:id="@+id/userMobileNumber"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
         android:fontFamily="@font/pt_sans"
-        android:text="Age: 20 Yrs"
+        tools:text="Age: 20 Yrs"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/userMobileNumber" />
+        app:layout_constraintTop_toBottomOf="@id/userEmailId" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

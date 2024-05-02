@@ -475,6 +475,29 @@
 
                 </androidx.cardview.widget.CardView>
 
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tips"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/pt_sans_bold"
+                    android:paddingHorizontal="20dp"
+                    android:text="Farmer Tips"
+                    android:textColor="@color/secondary_dark"
+                    android:textSize="30dp"
+                    android:textStyle="bold" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:orientation="vertical"
+                    tools:listitem="@layout/item_tips"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="20dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
             </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.core.widget.NestedScrollView>

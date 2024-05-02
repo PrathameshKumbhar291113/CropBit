@@ -6,16 +6,20 @@ import android.webkit.SslErrorHandler
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
-import com.cropbit.databinding.ActivityTermsAndConditionsBinding
+import com.cropbit.databinding.ActivityPrivacyPolicyBinding
 import com.cropbit.utils.appStatusBarColor
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class TermsAndConditionsActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityTermsAndConditionsBinding
+class PrivacyPolicyActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityPrivacyPolicyBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityTermsAndConditionsBinding.inflate(layoutInflater)
+
+        binding = ActivityPrivacyPolicyBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
 
         appStatusBarColor(this, window)
@@ -37,8 +41,8 @@ class TermsAndConditionsActivity : AppCompatActivity() {
             }
         })
 
-        val termsAndConditions = "https://sites.google.com/view/cropbit-terms-and-conditions/home"
-        binding.privacyPolicyWebView.loadUrl(termsAndConditions)
+        val privacyPolicyUrl = "https://sites.google.com/view/cropbitapp/privacy-policy"
+        binding.privacyPolicyWebView.loadUrl(privacyPolicyUrl)
         binding.privacyPolicyWebView.settings.javaScriptEnabled = true
         binding.privacyPolicyWebView.settings.setSupportZoom(true)
     }

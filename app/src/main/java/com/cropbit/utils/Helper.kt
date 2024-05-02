@@ -1,7 +1,10 @@
 package com.cropbit.utils
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.text.method.PasswordTransformationMethod
 import android.view.Window
 import android.widget.EditText
@@ -87,3 +90,39 @@ fun classifyFertilityValue(value: Float): String {
         else -> "Good"
     }
 }
+
+fun getInitials(fullName: String): String {
+    val parts = fullName.trim().split("\\s+".toRegex())
+    var initials = ""
+
+    for (part in parts) {
+        initials += part[0].toUpperCase() + " "
+    }
+    return initials.trim()
+}
+
+fun Activity.reachOutToUs(userName: String) {
+    val selectorIntent = Intent(Intent.ACTION_SENDTO)
+    selectorIntent.data = Uri.parse("mailto:")
+    val recipient = "helpdesk@cropbit.com"
+
+    val emailIntent = Intent(Intent.ACTION_SEND)
+    emailIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf(recipient))
+    emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Query.")
+    emailIntent.putExtra(
+        Intent.EXTRA_TEXT,
+        "Hi CropBit Team,\nI am $userName and\nI have a query regarding..."
+    )
+    emailIntent.selector = selectorIntent
+
+    try {
+        startActivity(Intent.createChooser(emailIntent, "Choose Email Client..."))
+    } catch (e: Exception) {
+
+    }
+}
+
+data class FarmerTips(
+    var titleTip: String,
+    var tipDescription: String
+)
