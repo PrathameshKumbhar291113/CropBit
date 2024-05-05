@@ -19,7 +19,9 @@ import com.cropbit.check_soil_fertility_module.CheckSoilFertilityActivity
 import com.cropbit.crop_disease_diagnosis_module.CropDiseaseDiagnosisActivity
 import com.cropbit.databinding.FragmentHomeBinding
 import com.cropbit.fertilizer_matrix_module.FertilizerMatrixActivity
+import com.cropbit.home_module.presentation.adapter.FarmerTipsAdapter
 import com.cropbit.home_module.presentation.view_model.HomeViewModel
+import com.cropbit.utils.FarmerTips
 import com.cropbit.utils.NetworkResult
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -32,6 +34,7 @@ import splitties.fragments.start
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private lateinit var farmerTipsAdapter: FarmerTipsAdapter
 
     private val homeViewModel: HomeViewModel by activityViewModels()
 
@@ -57,27 +60,32 @@ class HomeFragment : Fragment() {
 
     private fun setupObservers() {
 
-
-        homeViewModel.currentWeatherResponse.observe(viewLifecycleOwner){
-            when(it){
-                is NetworkResult.Loading ->{
+        homeViewModel.currentWeatherResponse.observe(viewLifecycleOwner) {
+            when (it) {
+                is NetworkResult.Loading -> {
 
                 }
-                is NetworkResult.Success ->{
+
+                is NetworkResult.Success -> {
                     lifecycleScope.launch {
-                            delay(3000)
-                            binding.progressContainer.isVisible = false
-                            binding.homeContainer.isVisible = true
+                        delay(3000)
+                        binding.progressContainer.isVisible = false
+                        binding.homeContainer.isVisible = true
                     }
 
                     binding.weatherForecastIcon.load("https:${it.data?.body()?.current?.condition?.icon.toString()}")
-                    Log.e("weather", "setupObservers: ${it.data?.body()?.current?.condition?.icon.toString()}")
-                    binding.temperatureTextView.text = "${it.data?.body()?.current?.tempC.toString()}°C"
-                    binding.conditionTextView.text = it.data?.body()?.current?.condition?.text.toString()
+                    Log.e(
+                        "weather",
+                        "setupObservers: ${it.data?.body()?.current?.condition?.icon.toString()}"
+                    )
+                    binding.temperatureTextView.text =
+                        "${it.data?.body()?.current?.tempC.toString()}°C"
+                    binding.conditionTextView.text =
+                        it.data?.body()?.current?.condition?.text.toString()
                     binding.locationTextView.text = it.data?.body()?.location?.name.toString()
                 }
 
-                is NetworkResult.Error ->{
+                is NetworkResult.Error -> {
                     binding.homeContainer.isVisible = true
                     binding.progressContainer.isVisible = false
                 }
@@ -89,28 +97,55 @@ class HomeFragment : Fragment() {
     private fun setupUi() {
 
         binding.btnGoToCropDisease.setOnClickListener {
-            start<CropDiseaseDiagnosisActivity> ()
+            start<CropDiseaseDiagnosisActivity>()
         }
 
         binding.diseaseDiagnosisYourCropTv.setOnClickListener {
-            start<CropDiseaseDiagnosisActivity> ()
+            start<CropDiseaseDiagnosisActivity>()
         }
 
         binding.btnGoToSoilFertility.setOnClickListener {
-            start<CheckSoilFertilityActivity> ()
+            start<CheckSoilFertilityActivity>()
         }
 
         binding.soilFertilityDetectionTv.setOnClickListener {
-            start<CheckSoilFertilityActivity> ()
+            start<CheckSoilFertilityActivity>()
         }
 
         binding.btnGoToFertilizerMetrix.setOnClickListener {
-            start<FertilizerMatrixActivity> ()
+            start<FertilizerMatrixActivity>()
         }
 
         binding.fertilizerCalculatorTv.setOnClickListener {
-            start<FertilizerMatrixActivity> ()
+            start<FertilizerMatrixActivity>()
         }
+
+        var listOfTips: ArrayList<FarmerTips> = arrayListOf(
+            FarmerTips(
+                "Crop Rotation",
+                "Rotate crops each season to help prevent soil depletion and control pests and diseases."
+
+            ),
+            FarmerTips(
+                "Companion Planting",
+                "Plant compatible crops together to promote healthier growth and deter pests."
+            ),
+            FarmerTips(
+                "Mulching",
+                "Apply organic mulch around plants to conserve moisture, suppress weeds, and improve soil structure."
+            ),
+            FarmerTips(
+                "Drip Irrigation",
+                "Install drip irrigation systems to deliver water directly to plant roots, minimizing water waste through evaporation and runoff."
+            ),
+            FarmerTips(
+                "Cover Cropping",
+                " Plant cover crops during fallow periods to protect and enrich the soil."
+            )
+        )
+
+        farmerTipsAdapter = FarmerTipsAdapter(listOfTips)
+        binding.recyclerView.adapter = farmerTipsAdapter
 
     }
 
@@ -135,10 +170,21 @@ class HomeFragment : Fragment() {
 
                     homeViewModel.getCurrentWeatherForecast(latitude, longitude)
 
-                    Log.e("Location", "Latitude: ${latitude.toString()}, Longitude: ${longitude.toString()}")
-                    Toast.makeText(requireContext(), "Latitude: $latitude, Longitude: $longitude", Toast.LENGTH_LONG).show()
+                    Log.e(
+                        "Location",
+                        "Latitude: ${latitude.toString()}, Longitude: ${longitude.toString()}"
+                    )
+                    Toast.makeText(
+                        requireContext(),
+                        "Latitude: $latitude, Longitude: $longitude",
+                        Toast.LENGTH_LONG
+                    ).show()
                 } else {
-                    Toast.makeText(requireContext(), "Enable GPS To Fetch Location.", Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        requireContext(),
+                        "Enable GPS To Fetch Location.",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             }
             .addOnFailureListener { e ->
