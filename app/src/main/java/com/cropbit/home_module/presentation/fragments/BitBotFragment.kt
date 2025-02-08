@@ -11,12 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.cropbit.databinding.FragmentBitBotBinding
 import com.cropbit.home_module.presentation.adapter.MessageAdapter
 import com.cropbit.home_module.presentation.view_model.BitBotViewModel
-import com.cropbit.network_module.network_models.request.ChatBotRequestBody
-import com.cropbit.utils.NetworkResult
 import com.cropbit.utils.models.bot_bit_feature.Message
-import com.google.gson.JsonObject
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
@@ -26,7 +22,7 @@ class BitBotFragment : Fragment() {
     private var messageList: MutableList<Message> = mutableListOf()
     private lateinit var messageAdapter: MessageAdapter
 
-    private val bitBotViewModel : BitBotViewModel by activityViewModels()
+    private val bitBotViewModel: BitBotViewModel by activityViewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +33,7 @@ class BitBotFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View{
+    ): View {
         binding = FragmentBitBotBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -53,31 +49,10 @@ class BitBotFragment : Fragment() {
     private fun setUpObservers() {
         addToChat("Hi, BitBot Here\nHow Can I Help You?", Message.SENT_BY_BOT)
 
-        bitBotViewModel.chatBotResponse.observe(viewLifecycleOwner) {
-            when (it) {
-                is NetworkResult.Loading -> {
 
-                }
-
-                is NetworkResult.Success -> {
-                    lifecycleScope.launch {
-                        addToChat("Typing...", Message.SENT_BY_BOT)
-                        delay(3000)
-                        it.data?.body()?.let { chatResponse ->
-                            chatResponse.choices?.forEach { choice ->
-                                choice?.text?.let { text ->
-                                    addResponse(text.trim())
-                                }
-                            }
-
-                        }
-                    }
-
-                }
-
-                is NetworkResult.Error -> {
-
-                }
+        bitBotViewModel.response.observe(viewLifecycleOwner) {
+            lifecycleScope.launch {
+                addResponse(it.trim())
             }
         }
     }
@@ -89,18 +64,11 @@ class BitBotFragment : Fragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         binding.sendBtn.setOnClickListener {
-            runBlocking{
-                var requestBody = ChatBotRequestBody(
-                    prompt = binding.messageEditText.text?.trim().toString()
-                )
+            runBlocking {
                 addToChat(binding.messageEditText.text?.trim().toString(), Message.SENT_BY_ME)
-                var jsonObject = JsonObject()
-                jsonObject.addProperty("model", requestBody.model)
-                jsonObject.addProperty("prompt", requestBody.prompt)
-                jsonObject.addProperty("max_tokens", requestBody.maxTokens)
-                jsonObject.addProperty("temperature", requestBody.temperature)
-                bitBotViewModel.postChatBotPrompt(jsonObject)
+                bitBotViewModel.fetchResponse(binding.messageEditText.text?.trim().toString())
                 binding.messageEditText.setText("")
+                addToChat("Typing...", Message.SENT_BY_BOT)
             }
         }
     }

@@ -1,6 +1,5 @@
 package com.cropbit.network_module.network_models.response
 
-
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
@@ -10,35 +9,41 @@ data class ChatBotPromptResponse(
     @SerializedName("choices")
     var choices: List<Choice?>?,
     @SerializedName("created")
-    var created: Int?, // 1707247286
+    var created: Int?,
     @SerializedName("id")
-    var id: String?, // cmpl-8pLIUHSDstSDBrxFoEThUANOFJvWv
+    var id: String?,
     @SerializedName("model")
-    var model: String?, // gpt-3.5-turbo-instruct
+    var model: String?,
     @SerializedName("object")
-    var objectX: String?, // text_completion
+    var objectX: String?,
     @SerializedName("usage")
     var usage: Usage?
 ) : Parcelable {
     @Parcelize
     data class Choice(
         @SerializedName("finish_reason")
-        var finishReason: String?, // stop
+        var finishReason: String?,
         @SerializedName("index")
-        var index: Int?, // 0
-        @SerializedName("logprobs")
-        var logprobs: String?, // null
-        @SerializedName("text")
-        var text: String? // fun main() {    println("Hello, world!")}// Output: Hello, world!
+        var index: Int?,
+        @SerializedName("message") // Instead of "text", GPT-4o uses "message"
+        var message: Message?
+    ) : Parcelable
+
+    @Parcelize
+    data class Message( // New message structure
+        @SerializedName("role")
+        var role: String?,
+        @SerializedName("content")
+        var content: String?
     ) : Parcelable
 
     @Parcelize
     data class Usage(
         @SerializedName("completion_tokens")
-        var completionTokens: Int?, // 21
+        var completionTokens: Int?,
         @SerializedName("prompt_tokens")
-        var promptTokens: Int?, // 4
+        var promptTokens: Int?,
         @SerializedName("total_tokens")
-        var totalTokens: Int? // 25
+        var totalTokens: Int?
     ) : Parcelable
 }

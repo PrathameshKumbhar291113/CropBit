@@ -15,7 +15,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import coil.load
-import com.cropbit.check_soil_fertility_module.CheckSoilFertilityActivity
 import com.cropbit.crop_disease_diagnosis_module.CropDiseaseDiagnosisActivity
 import com.cropbit.databinding.FragmentHomeBinding
 import com.cropbit.fertilizer_matrix_module.FertilizerMatrixActivity
@@ -105,11 +104,11 @@ class HomeFragment : Fragment() {
         }
 
         binding.btnGoToSoilFertility.setOnClickListener {
-            start<CheckSoilFertilityActivity>()
+//            start<CheckSoilFertilityActivity>()
         }
 
         binding.soilFertilityDetectionTv.setOnClickListener {
-            start<CheckSoilFertilityActivity>()
+//            start<CheckSoilFertilityActivity>()
         }
 
         binding.btnGoToFertilizerMetrix.setOnClickListener {

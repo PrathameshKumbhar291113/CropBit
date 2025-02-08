@@ -1,5 +1,6 @@
 package com.cropbit
 
+import com.cropbit.ai_chat_bot_module.GeminiRepository
 import com.cropbit.network_module.chat_bot_api_service.ChatBotApiService
 import com.cropbit.network_module.weather_forecast_api_service.WeatherForecastApiService
 import com.cropbit.utils.ApiConstants
@@ -45,6 +46,12 @@ object CropBitApplicationModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(WeatherForecastApiService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGeminiRepository(): GeminiRepository {
+        return GeminiRepository()
     }
 
 
