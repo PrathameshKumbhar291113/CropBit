@@ -14,7 +14,7 @@ android {
     namespace 'com.cropbit'
     compileSdk 34
 
-    buildFeatures{
+    buildFeatures {
         viewBinding true
     }
 
@@ -75,6 +75,7 @@ dependencies {
     def circular_image_view_version = '3.1.0'
     def glide_version = '4.13.2'
     def google_location_version = '21.2.0'
+    def gemini_generative_ai_version = '0.9.0'
 
     implementation "androidx.core:core-ktx:$androidx_core_version"
     implementation "androidx.appcompat:appcompat:$androidx_appcompat_version"
@@ -158,4 +159,6 @@ dependencies {
 
     //google fused location
     implementation "com.google.android.gms:play-services-location:$google_location_version"
+
+    implementation "com.google.ai.client.generativeai:generativeai:$gemini_generative_ai_version"
 }
