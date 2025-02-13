@@ -1,9 +1,13 @@
 package com.cropbit.home_module.presentation.fragments
 
 import android.Manifest
+import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
+import android.location.LocationManager
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -23,6 +27,7 @@ import com.cropbit.home_module.presentation.view_model.HomeViewModel
 import com.cropbit.utils.FarmerTips
 import com.cropbit.utils.NetworkResult
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
@@ -151,17 +156,22 @@ class HomeFragment : Fragment() {
     private fun fetchLocation() {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
 
-        if (ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
+        val locationManager = requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        val isGpsEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
+
+        if (!isGpsEnabled) {
+            Toast.makeText(requireContext(), "Please enable GPS to fetch location.", Toast.LENGTH_LONG).show()
+            startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+            return
+        }
+
+        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
         ) {
             return
         }
-        fusedLocationClient.lastLocation
+
+        fusedLocationClient.getCurrentLocation(LocationRequest.PRIORITY_HIGH_ACCURACY, null)
             .addOnSuccessListener { location: Location? ->
                 if (location != null) {
                     val latitude = location.latitude
@@ -169,26 +179,17 @@ class HomeFragment : Fragment() {
 
                     homeViewModel.getCurrentWeatherForecast(latitude, longitude)
 
-                    Log.e(
-                        "Location",
-                        "Latitude: ${latitude.toString()}, Longitude: ${longitude.toString()}"
-                    )
-                    Toast.makeText(
-                        requireContext(),
-                        "Latitude: $latitude, Longitude: $longitude",
-                        Toast.LENGTH_LONG
-                    ).show()
+                    Log.e("Location", "Latitude: $latitude, Longitude: $longitude")
+                    Toast.makeText(requireContext(), "Latitude: $latitude, Longitude: $longitude", Toast.LENGTH_LONG).show()
                 } else {
-                    Toast.makeText(
-                        requireContext(),
-                        "Enable GPS To Fetch Location.",
-                        Toast.LENGTH_LONG
-                    ).show()
+                    Toast.makeText(requireContext(), "Unable to get location. Try again. -- ${location.toString()}", Toast.LENGTH_LONG).show()
                 }
             }
             .addOnFailureListener { e ->
                 Log.e("Location", "Error: ${e.message}")
             }
     }
+
+
 
 }
